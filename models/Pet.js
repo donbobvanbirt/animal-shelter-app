@@ -13,15 +13,6 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
   if (err) throw err;
 })
 
-// exports.findAll = () => new Promise((resolve, reject) => {
-//
-//   let sql = `SELECT * FROM ${TABLE_NAME}`;
-//
-//   db.query(sql, (err, pets) => {
-//     if (err) return reject(err);
-//     resolve(pets);
-//   });
-// })
 exports.findAll = (cb) => {
   let sql = `SELECT * FROM ${TABLE_NAME}`;
   db.query(sql, (err, pets) => {
@@ -30,13 +21,13 @@ exports.findAll = (cb) => {
   });
 }
 
-exports.create = function(pet) {
-  return new Promise((resolve, refect) => {
+exports.create = (pet, cb) => {
+  return new Promise((res, rej) => {
     let sql = squel.insert().into(TABLE_NAME).setFields(pet).toString();
 
     db.query(sql, (err, result) => {
-      if (err) return reject(err);
-      resolve(result);
+      if (err) return cb(err);
+      res(result);
     });
   });
 }

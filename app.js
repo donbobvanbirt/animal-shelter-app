@@ -18,6 +18,10 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('build'));
+app.use((req, res, next) => {
+  res.handle = (err, data) => res.status( err ? 400 : 200).send(err || data)
+  next()
+})
 
 // ROUTES
 app.use('/api', require('./routes/api'));

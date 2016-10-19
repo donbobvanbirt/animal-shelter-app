@@ -11,32 +11,21 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
   if (err) throw err;
 })
 
-exports.findAll = () => new Promise((resolve, reject) => {
-
-  // let sql = squel.select()
-  //                .from(TABLE_NAME)
-  //                .field('Owners.id', 'id')
-  //                .field('Owners.name')
-  //                .field('Teams.name', 'teamName')
-  //                .join('Teams', null, 'Owners.teamId = Teams.id')
-  //                .where('Owners.teamId = 1') // specify team. if not included, all teams will be shown
-  //                .toString();
-
+exports.findAll = (cb) => {
   let sql = `SELECT * FROM ${TABLE_NAME}`;
-
   db.query(sql, (err, owners) => {
-    if (err) return reject(err);
-    resolve(owners);
+    if (err) return cb(err);
+    cb(null, owners);
   });
-})
+}
 
-exports.create = function(owner) {
-  return new Promise((resolve, refect) => {
+exports.create = (owner, cb) => {
+  return new Promise((res, rej) => {
     let sql = squel.insert().into(TABLE_NAME).setFields(owner).toString();
 
     db.query(sql, (err, result) => {
-      if (err) return reject(err);
-      resolve(result);
+      if (err) return cb(err);
+      res(result);
     });
   });
 }
