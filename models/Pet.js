@@ -53,7 +53,7 @@ exports.findPetsOwner = (name, cb) => {
                  .field('Pets.type')
                  .field('Owners.name', 'Owner')
                  .join('Owners', null, 'Pets.ownerId = Owners.id')
-                 .where(`Pets.name = ${name}`)
+                 .where(`Pets.name = '${name}'`)
                  .toString();
   db.query(sql, (err, pet) => {
     if (err) return cb(err);
@@ -81,8 +81,20 @@ exports.adopt = (body, cb) => {
                  .set('ownerId', owner)
                  .where(`id = ${pet}`)
                  .toString();
-                 db.query(sql, (err, p) => {
-                   if (err) return cb(err);
-                   cb(null, p);
-                 });
-               }
+  db.query(sql, (err, p) => {
+    if (err) return cb(err);
+    cb(null, p);
+  });
+}
+
+exports.unAdopt = (pet, cb) => {
+  let sql = squel.update()
+                 .table(TABLE_NAME)
+                 .set('ownerId', 0)
+                 .where(`id = ${pet}`)
+                 .toString();
+  db.query(sql, (err, p) => {
+    if (err) return cb(err);
+    cb(null, p);
+  });
+}

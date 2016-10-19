@@ -3,6 +3,12 @@ const router = express.Router();
 
 const Pet = require('../models/Pet');
 
+router.route('/unadopt/:pet')
+  .put((req, res) => {
+    Pet.unAdopt(req.params.pet, res.handle)
+  })
+
+
 router.route('/adopt')
   .put((req, res) => {
     Pet.adopt(req.body, res.handle)

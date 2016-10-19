@@ -12,7 +12,17 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
 })
 
 exports.findAll = (cb) => {
-  let sql = `SELECT * FROM ${TABLE_NAME}`;
+  // let sql = `SELECT * FROM ${TABLE_NAME}`;
+
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Owners.name', 'Name')
+                 .field('Owners.id', 'id')
+                 .field('Pets.name', 'Pets')
+                 .field('Pets.id', 'PetId')
+                 .join('Pets', null, 'Owners.id = Pets.ownerId')
+                 .toString();
+
   db.query(sql, (err, owners) => {
     if (err) return cb(err);
     cb(null, owners);
@@ -33,9 +43,10 @@ exports.create = (owner, cb) => {
 exports.findPets = (name, cb) => {
   let sql = squel.select()
                  .from(TABLE_NAME)
+                 .field('Owners.name', 'Owner')
+                 .field('Owners.id', 'id')
                  .field('Pets.name')
                  .field('Pets.type')
-                 .field('Owners.name', 'Owner')
                  .join('Pets', null, 'Owners.id = Pets.ownerId')
                  .where(`Owners.name = '${name}'`)
                  .toString();

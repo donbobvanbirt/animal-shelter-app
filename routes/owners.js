@@ -14,10 +14,10 @@ router.route('/')
       Owner.findAll(res.handle)
     })
 
-    .post((req, res) => {
-      Owner.create(req.body, res.handle)
-        .then((result) => Owner.findAll(res.handle))
-    })
+  .post((req, res) => {
+    Owner.create(req.body, res.handle)
+      .then((result) => Owner.findAll(res.handle))
+  })
 
   // router.route('/:id')
   //   .put((req, res) => {
