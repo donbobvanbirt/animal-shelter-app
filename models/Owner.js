@@ -30,6 +30,21 @@ exports.create = (owner, cb) => {
   });
 }
 
+exports.findPets = (name, cb) => {
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Pets.name')
+                 .field('Pets.type')
+                 .field('Owners.name', 'Owner')
+                 .join('Pets', null, 'Owners.id = Pets.ownerId')
+                 .where(`Owners.name = '${name}'`)
+                 .toString();
+  db.query(sql, (err, pet) => {
+    if (err) return cb(err);
+    cb(null, pet);
+  });
+}
+
 // exports.update = function(playerId, updateObj) {
 //   return new Promise((resolve, reject) => {
 //     let sql = squel.update().table(TABLE_NAME).setFields(updateObj).where(`id = ${playerId}`).toString();

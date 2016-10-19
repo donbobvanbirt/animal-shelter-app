@@ -31,3 +31,58 @@ exports.create = (pet, cb) => {
     });
   });
 }
+
+exports.findOwners = (cb) => {
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Pets.name')
+                 .field('Pets.type')
+                 .field('Owners.name', 'Owner')
+                 .join('Owners', null, 'Pets.ownerId = Owners.id')
+                 .toString();
+  db.query(sql, (err, pets) => {
+    if (err) return cb(err);
+    cb(null, pets);
+  });
+}
+
+exports.findPetsOwner = (name, cb) => {
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Pets.name')
+                 .field('Pets.type')
+                 .field('Owners.name', 'Owner')
+                 .join('Owners', null, 'Pets.ownerId = Owners.id')
+                 .where(`Pets.name = ${name}`)
+                 .toString();
+  db.query(sql, (err, pet) => {
+    if (err) return cb(err);
+    cb(null, pet);
+  });
+}
+
+exports.findAvailablePets = (cb) => {
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Pets.name')
+                 .field('Pets.type')
+                 .where('Pets.ownerId < 1')
+                 .toString();
+  db.query(sql, (err, pet) => {
+    if (err) return cb(err);
+    cb(null, pet);
+  });
+}
+
+exports.adopt = (body, cb) => {
+  let { owner, pet } = body;
+  let sql = squel.update()
+                 .table(TABLE_NAME)
+                 .set('ownerId', owner)
+                 .where(`id = ${pet}`)
+                 .toString();
+                 db.query(sql, (err, p) => {
+                   if (err) return cb(err);
+                   cb(null, p);
+                 });
+               }
