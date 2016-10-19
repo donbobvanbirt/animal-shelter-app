@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// connect other routers here!
+router.use('/pets', require('./pets'))
+router.use('/owners', require('./owners'))
 
 module.exports = router;
