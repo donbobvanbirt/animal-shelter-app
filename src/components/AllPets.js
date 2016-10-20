@@ -18,8 +18,6 @@ export default class AllPets extends Component {
     this.close = this.close.bind(this);
     this.submitAdoption = this.submitAdoption.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.createAdoptButton = this.createAdoptButton.bind(this);
-    // this.createUnadoptButton = this.createUnadoptButton.bind(this);
   }
 
   componentWillMount() {
@@ -40,7 +38,7 @@ export default class AllPets extends Component {
   }
 
   adoptPet(id) {
-    console.log('id:', id)
+    // console.log('id:', id)
     this.setState({
       adoptModelOpen: true,
       currentPet: id
@@ -48,7 +46,6 @@ export default class AllPets extends Component {
   }
 
   unadoptPet(id) {
-    // console.log('id:', id)
     PetActions.unadoptPet(id);
   }
 
@@ -84,13 +81,13 @@ export default class AllPets extends Component {
       pet: currentPet,
       owner: currentOwner
     }
-    console.log('adoptionObj', adoptionObj)
+    // console.log('adoptionObj', adoptionObj)
     PetActions.adoptPet(adoptionObj);
     this.close();
   }
 
   handleChange(e, {value}) {
-    console.log('value:', value);
+    // console.log('value:', value);
     this.setState({
       currentOwner: value
     })
@@ -98,7 +95,7 @@ export default class AllPets extends Component {
 
   render() {
     let { pets, adoptModelOpen, owners } = this.state;
-    console.log('owners:', owners);
+    // console.log('owners:', owners);
     let petList = '';
     let ownerList = [];
 
@@ -122,12 +119,6 @@ export default class AllPets extends Component {
         let { name, id } = owner;
         ownerList.push({text: name, value: id})
       })
-      // ownerList = owners.map(owner => {
-      //   let { name, id } = owner;
-      //   return (
-      //     <Dropdown.Item text={name} key={id}/>
-      //   )
-      // })
     }
 
     return (
@@ -152,13 +143,6 @@ export default class AllPets extends Component {
             <Modal.Description>
               <Header>Who is Adopting this pet?</Header>
 
-              {/* <Dropdown text='Clients'>
-                <Dropdown.Menu>
-
-                  {ownerList}
-
-                </Dropdown.Menu>
-              </Dropdown> */}
               <Dropdown onChange={this.handleChange} placeholder='Client' options={ownerList} header='Select Client' />
 
             </Modal.Description>

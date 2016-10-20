@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
-import { Menu, Container } from 'semantic-ui-react'
+import { Menu, Container, Header } from 'semantic-ui-react'
 
 import AddClient from './AddClient'
 import AllClients from './AllClients'
@@ -31,13 +31,10 @@ export default class Clients extends Component {
       subComponent = <ClientSearch/>
     }
 
-
-    // console.log("subComponent", subComponent)
-
     return (
       <div>
         <Container>
-          <h1>Clients</h1>
+          <Header as='h1' textAlign='center'>Animal Shelter</Header>
           <Menu tabular>
             <Menu.Item name='add' active={activeItem === 'add'} onClick={() => this.handleItemClick('add')} />
             <Menu.Item name='view all' active={activeItem === 'all'} onClick={() => this.handleItemClick('all')} />

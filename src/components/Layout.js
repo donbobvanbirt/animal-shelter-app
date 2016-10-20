@@ -16,7 +16,6 @@ export default class Layout extends Component {
   }
 
   render() {
-    // let path = this.props.location.pathname
     const { activeItem } = this.state;
 
     return (

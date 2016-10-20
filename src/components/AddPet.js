@@ -18,7 +18,6 @@ export default class AddPet extends Component {
       type: type.value,
       ownerId: 0
     }
-    // console.log('petObj:', petObj)
     PetActions.addNewPet(petObj);
     name.value = '';
     type.value = '';

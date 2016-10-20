@@ -16,7 +16,6 @@ export default class AddPet extends Component {
     let clientObj = {
       name: name.value
     }
-    // console.log('clientObj:', clientObj)
     PetActions.addNewClient(clientObj);
     name.value = '';
   }

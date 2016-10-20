@@ -14,15 +14,6 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
 exports.findAll = (cb) => {
   let sql = `SELECT * FROM ${TABLE_NAME}`;
 
-  // let sql = squel.select()
-  //                .from(TABLE_NAME)
-  //                .field('Owners.name', 'Name')
-  //                .field('Owners.id', 'id')
-  //                .field('Pets.name', 'Pets')
-  //                .field('Pets.id', 'PetId')
-  //                .join('Pets', null, 'Owners.id = Pets.ownerId')
-  //                .toString();
-
   db.query(sql, (err, owners) => {
     if (err) return cb(err);
     cb(null, owners);
@@ -68,13 +59,3 @@ exports.findOwner = (name, cb) => {
     cb(null, pet);
   });
 }
-
-// exports.update = function(playerId, updateObj) {
-//   return new Promise((resolve, reject) => {
-//     let sql = squel.update().table(TABLE_NAME).setFields(updateObj).where(`id = ${playerId}`).toString();
-//     db.query(sql, (err, result) => {
-//       if (err) return reject(err);
-//       resolve(result);
-//     });
-//   });
-// }

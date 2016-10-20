@@ -16,8 +16,7 @@ const API = {
     post('/api/pets', obj)
     .then(res => {
       let { data } = res;
-      console.log('data', data);
-
+      // console.log('data', data);
     })
     .catch(console.error)
   },
@@ -26,7 +25,7 @@ const API = {
     post('/api/owners', obj)
     .then(res => {
       let { data } = res;
-      console.log('data', data);
+      // console.log('data', data);
 
     })
     .catch(console.error)
@@ -80,7 +79,7 @@ const API = {
     get(`/api/owners/find/${name}`)
     .then(res => {
       let { data } = res;
-      console.log('data in findClient', data);
+      // console.log('data in findClient', data);
       ServerActions.ownerSearchResults(data);
     })
     .catch(console.error)
@@ -90,7 +89,7 @@ const API = {
     get(`/api/pets/owner/${name}`)
     .then(res => {
       let { data } = res;
-      console.log('data in petSearch', data[0]);
+      // console.log('data in petSearch', data[0]);
       if (data[0]) {
         ServerActions.petSearchResults(data);
       } else {
@@ -104,7 +103,7 @@ const API = {
     get(`/api/pets/find/${name}`)
     .then(res => {
       let { data } = res;
-      console.log('data in findPet', data);
+      // console.log('data in findPet', data);
       ServerActions.petSearchResults(data);
     })
     .catch(console.error)

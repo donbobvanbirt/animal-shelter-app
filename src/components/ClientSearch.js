@@ -30,14 +30,13 @@ export default class ClientSearch extends Component {
   }
 
   submitSearch() {
-    console.log('this.state.searchForm', this.state.searchForm)
     PetActions.clientSearch(this.state.searchForm);
   }
 
   _onChange() {
     this.setState({
       client: PetStore.getOwner()
-    }, console.log('this.state', this.state))
+    })
   }
 
   render() {

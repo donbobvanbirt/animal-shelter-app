@@ -30,7 +30,7 @@ export default class PetSearch extends Component {
   }
 
   submitSearch() {
-    console.log('this.state.searchForm', this.state.searchForm)
+    // console.log('this.state.searchForm', this.state.searchForm)
     PetActions.petSearch(this.state.searchForm);
   }
 
@@ -43,7 +43,7 @@ export default class PetSearch extends Component {
   render() {
     let { pet } = this.state;
     let petList, petName, petId;
-    console.log('this.state', this.state)
+    // console.log('this.state', this.state)
 
     if (pet) {
       // petName = pet[0].Owner;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
-import { Menu, Container } from 'semantic-ui-react'
+import { Menu, Container, Header } from 'semantic-ui-react'
 
 import AddPet from './AddPet'
 import AllPets from './AllPets'
@@ -31,13 +31,10 @@ export default class Pets extends Component {
       subComponent = <PetSearch/>
     }
 
-
-    console.log("subComponent", subComponent)
-
     return (
       <div>
         <Container>
-          <h1>Pets</h1>
+          <Header as='h1' textAlign='center'>Animal Shelter</Header>
 
           <Menu tabular>
             <Menu.Item name='add' active={activeItem === 'add'} onClick={() => this.handleItemClick('add')} />
