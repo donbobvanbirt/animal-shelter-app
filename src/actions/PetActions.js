@@ -19,6 +19,10 @@ const PetActions = {
 
   addNewPet(obj) {
     API.addNewPet(obj);
+  },
+
+  addNewClient(obj) {
+    API.addNewClient(obj);
   }
 }
 

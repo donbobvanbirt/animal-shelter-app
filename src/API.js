@@ -22,6 +22,16 @@ const API = {
     .catch(console.error)
   },
 
+  addNewClient(obj) {
+    post('/api/owners', obj)
+    .then(res => {
+      let { data } = res;
+      console.log('data', data);
+
+    })
+    .catch(console.error)
+  },
+
   getAllOwners() {
     get('/api/owners')
     .then(res => {

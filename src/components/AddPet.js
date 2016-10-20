@@ -31,11 +31,11 @@ export default class AddPet extends Component {
         <Form onSubmit={this.addNewPet}>
           <Form.Field>
             <label>Pet Name</label>
-            <input ref="name" placeholder='Sir Barks-A-Lot...' />
+            <input name="petName" ref="name" placeholder='Sir Barks-A-Lot...' />
           </Form.Field>
           <Form.Field>
             <label>Type</label>
-            <input ref="type" placeholder='Cat, dog, snake, etc...' />
+            <input name="petType" ref="type" placeholder='Cat, dog, snake, etc...' />
           </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
