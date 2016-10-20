@@ -5,6 +5,7 @@ import { Menu } from 'semantic-ui-react'
 
 import AddPet from './AddPet'
 import AllPets from './AllPets'
+import PetSearch from './PetSearch'
 
 export default class Pets extends Component {
   constructor() {
@@ -26,6 +27,8 @@ export default class Pets extends Component {
       subComponent = <AddPet/>
     } else if (activeItem === "all") {
       subComponent = <AllPets/>
+    } else if (activeItem === "search") {
+      subComponent = <PetSearch/>
     }
 
 
@@ -37,7 +40,7 @@ export default class Pets extends Component {
         <Menu tabular>
           <Menu.Item name='add' active={activeItem === 'add'} onClick={() => this.handleItemClick('add')} />
           <Menu.Item name='view all' active={activeItem === 'all'} onClick={() => this.handleItemClick('all')} />
-          <Menu.Item name='view available' active={activeItem === 'available'} onClick={() => this.handleItemClick('available')} />
+          {/* <Menu.Item name='view available' active={activeItem === 'available'} onClick={() => this.handleItemClick('available')} /> */}
           <Menu.Item name='search' active={activeItem === 'search'} onClick={() => this.handleItemClick('search')} />
         </Menu>
         {subComponent}

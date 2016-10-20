@@ -52,8 +52,23 @@ exports.findPetsOwner = (name, cb) => {
                  .from(TABLE_NAME)
                  .field('Pets.name')
                  .field('Pets.type')
+                 .field('Pets.id')
                  .field('Owners.name', 'Owner')
                  .join('Owners', null, 'Pets.ownerId = Owners.id')
+                 .where(`Pets.name = '${name}'`)
+                 .toString();
+  db.query(sql, (err, pet) => {
+    if (err) return cb(err);
+    cb(null, pet);
+  });
+}
+
+exports.findPet = (name, cb) => {
+  let sql = squel.select()
+                 .from(TABLE_NAME)
+                 .field('Pets.name')
+                 .field('Pets.type')
+                 .field('Pets.id')
                  .where(`Pets.name = '${name}'`)
                  .toString();
   db.query(sql, (err, pet) => {

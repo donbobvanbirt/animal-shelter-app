@@ -4,6 +4,7 @@ import AppDispatcher from '../AppDispatcher'
 let allPets = null;
 let allOwners = null;
 let _owner = null;
+let _pet = null;
 
 class PetStore extends EventEmitter {
   constructor() {
@@ -23,6 +24,11 @@ class PetStore extends EventEmitter {
           break;
         case 'OWNER_SEARCH_RESULTS':
           _owner = action.payload.data;
+
+          this.emit('CHANGE');
+          break;
+        case 'PET_SEARCH_RESULTS':
+          _pet = action.payload.data;
 
           this.emit('CHANGE');
           break;
@@ -48,6 +54,10 @@ class PetStore extends EventEmitter {
 
   getOwner() {
     return _owner;
+  }
+
+  getPet() {
+    return _pet;
   }
 }
 

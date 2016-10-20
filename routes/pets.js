@@ -20,6 +20,12 @@ router.route('/owner/:petName')
     Pet.findPetsOwner(petName, res.handle)
   })
 
+router.route('/find/:petName')
+  .get((req, res) => {
+    let { petName } = req.params;
+    Pet.findPet(petName, res.handle)
+  })
+
 router.route('/owner')
   .get((req, res) => {
     Pet.findOwners(res.handle)

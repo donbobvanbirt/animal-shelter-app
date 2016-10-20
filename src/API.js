@@ -62,7 +62,7 @@ const API = {
     .catch(console.error)
   },
 
-  clientSearch(name) {
+  petSearch(name) {
     get(`/api/owners/pets/${name}`)
     .then(res => {
       let { data } = res;
@@ -82,6 +82,30 @@ const API = {
       let { data } = res;
       console.log('data in findClient', data);
       ServerActions.ownerSearchResults(data);
+    })
+    .catch(console.error)
+  },
+
+  petSearch(name) {
+    get(`/api/pets/owner/${name}`)
+    .then(res => {
+      let { data } = res;
+      console.log('data in petSearch', data[0]);
+      if (data[0]) {
+        ServerActions.petSearchResults(data);
+      } else {
+        this.findPet(name)
+      }
+    })
+    .catch(console.error)
+  },
+
+  findPet(name) {
+    get(`/api/pets/find/${name}`)
+    .then(res => {
+      let { data } = res;
+      console.log('data in findPet', data);
+      ServerActions.petSearchResults(data);
     })
     .catch(console.error)
   }

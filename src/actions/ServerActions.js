@@ -20,6 +20,13 @@ const ServerActions = {
       type: 'OWNER_SEARCH_RESULTS',
       payload: { data }
     })
+  },
+
+  petSearchResults(data) {
+    AppDispatcher.dispatch({
+      type: 'PET_SEARCH_RESULTS',
+      payload: { data }
+    })
   }
 }
 

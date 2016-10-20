@@ -27,6 +27,10 @@ const PetActions = {
 
   clientSearch(name) {
     API.clientSearch(name)
+  },
+
+  petSearch(name) {
+    API.petSearch(name)
   }
 }
 
