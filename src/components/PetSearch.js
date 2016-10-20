@@ -63,6 +63,7 @@ export default class PetSearch extends Component {
 
     return (
       <Container>
+        <h2>Search By Pet Name</h2>
         <Input onChange={(e) => this.searchBarVal(e)} fluid icon='search' placeholder='Pet Name...' />
         <Button onClick={this.submitSearch} primary>Submit</Button>
 

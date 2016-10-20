@@ -132,7 +132,7 @@ export default class AllPets extends Component {
 
     return (
       <Container>
-
+        <h1>All Pets</h1>
         <Table unstackable>
           <Table.Header>
             <Table.Row>

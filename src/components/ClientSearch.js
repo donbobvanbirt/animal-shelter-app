@@ -60,6 +60,7 @@ export default class ClientSearch extends Component {
 
     return (
       <Container>
+        <Header as='h2'>Search by Client Name:</Header>
         <Input onChange={(e) => this.searchBarVal(e)} fluid icon='search' placeholder='Client Name...' />
         <Button onClick={this.submitSearch} primary>Submit</Button>
         <Header as='h2' textAlign='center'>Name: {clientName}</Header>

@@ -46,7 +46,7 @@ export default class AllClients extends Component {
 
     return (
       <Container>
-
+        <Header as='h2'>All Clients:</Header>
         <Table unstackable>
           <Table.Header>
             <Table.Row>

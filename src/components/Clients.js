@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 
 import AddClient from './AddClient'
 import AllClients from './AllClients'
@@ -36,12 +36,14 @@ export default class Clients extends Component {
 
     return (
       <div>
-        <h1>Clients</h1>
-        <Menu tabular>
-          <Menu.Item name='add' active={activeItem === 'add'} onClick={() => this.handleItemClick('add')} />
-          <Menu.Item name='view all' active={activeItem === 'all'} onClick={() => this.handleItemClick('all')} />
-          <Menu.Item name='search' active={activeItem === 'search'} onClick={() => this.handleItemClick('search')} />
-        </Menu>
+        <Container>
+          <h1>Clients</h1>
+          <Menu tabular>
+            <Menu.Item name='add' active={activeItem === 'add'} onClick={() => this.handleItemClick('add')} />
+            <Menu.Item name='view all' active={activeItem === 'all'} onClick={() => this.handleItemClick('all')} />
+            <Menu.Item name='search' active={activeItem === 'search'} onClick={() => this.handleItemClick('search')} />
+          </Menu>
+        </Container>
         {subComponent}
 
       </div>
