@@ -6,6 +6,13 @@ const ServerActions = {
       type: 'GOT_ALL_PETS',
       payload: { data }
     })
+  },
+
+  gotAllOwners(data) {
+    AppDispatcher.dispatch({
+      type: 'GOT_ALL_OWNERS',
+      payload: { data }
+    })
   }
 }
 
