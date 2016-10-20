@@ -66,7 +66,21 @@ const API = {
     get(`/api/owners/pets/${name}`)
     .then(res => {
       let { data } = res;
-      // console.log('data', data);
+      console.log('data in clientSearch', data[0]);
+      if (data[0]) {
+        ServerActions.ownerSearchResults(data);
+      } else {
+        this.findClient(name)
+      }
+    })
+    .catch(console.error)
+  },
+
+  findClient(name) {
+    get(`/api/owners/find/${name}`)
+    .then(res => {
+      let { data } = res;
+      console.log('data in findClient', data);
       ServerActions.ownerSearchResults(data);
     })
     .catch(console.error)

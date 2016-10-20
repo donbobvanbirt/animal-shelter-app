@@ -9,10 +9,16 @@ router.route('/pets/:name')
     Owner.findPets(name, res.handle)
   })
 
+router.route('/find/:name')
+  .get((req, res) => {
+    let { name } = req.params
+    Owner.findOwner(name, res.handle)
+  })
+
 router.route('/')
   .get((req, res) => {
       Owner.findAll(res.handle)
-    })
+  })
 
   .post((req, res) => {
     Owner.create(req.body, res.handle)
