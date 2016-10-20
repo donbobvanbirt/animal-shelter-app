@@ -5,13 +5,18 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 
 // REQUIRES
-const bodyParser = require('body-parser');
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
+const path = require('path')
+const morgan = require('morgan')
+const express = require('express')
+const webpack = require('webpack')
+const bodyParser = require('body-parser')
+const webpackConfig = require('./webpack.config')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 // APP DECLARATION
 const app = express();
+const compiler = webpack(webpackConfig)
 
 // GENERAL MIDDLEWARE
 app.use(morgan('dev'));
@@ -23,12 +28,17 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: webpackConfig.output.publicPath, noInfo: true
+}))
+
+app.use(webpackHotMiddleware(compiler))
+
 // ROUTES
 app.use('/api', require('./routes/api'));
 
-app.get('/', (req, res) => {
-  let filepath = path.resolve('index.html');
-  res.sendFile(filepath);
+app.use("*", function(req, res) {
+  res.sendFile(path.join(__dirname, './build/index.html'));
 });
 
 // SERVER LISTEN

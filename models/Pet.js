@@ -15,6 +15,7 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
 
 exports.findAll = (cb) => {
   let sql = `SELECT * FROM ${TABLE_NAME}`;
+
   db.query(sql, (err, pets) => {
     if (err) return cb(err);
     cb(null, pets);
