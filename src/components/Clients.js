@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import { Menu } from 'semantic-ui-react'
 
 import AddClient from './AddClient'
+import AllClients from './AllClients'
 
 export default class Clients extends Component {
   constructor() {
@@ -24,7 +25,7 @@ export default class Clients extends Component {
     if (activeItem === "add") {
       subComponent = <AddClient/>
     } else if (activeItem === "all") {
-      // subComponent = <AllClients/>
+      subComponent = <AllClients/>
     }
 
 

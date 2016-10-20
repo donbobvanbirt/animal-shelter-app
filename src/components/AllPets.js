@@ -8,7 +8,7 @@ export default class AllPets extends Component {
   constructor() {
     super();
 
-    this.state={
+    this.state = {
       pets: PetStore.getAllPets(),
       owners: PetStore.getAllOwners(),
       adoptModelOpen: false
