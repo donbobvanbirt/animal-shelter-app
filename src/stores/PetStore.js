@@ -3,6 +3,7 @@ import AppDispatcher from '../AppDispatcher'
 
 let allPets = null;
 let allOwners = null;
+let _owner = null;
 
 class PetStore extends EventEmitter {
   constructor() {
@@ -12,12 +13,17 @@ class PetStore extends EventEmitter {
       switch (action.type) {
         case 'GOT_ALL_PETS':
           allPets = action.payload.data;
-          console.log('allPets:', allPets)
+          // console.log('allPets:', allPets)
           this.emit('CHANGE');
           break;
         case 'GOT_ALL_OWNERS':
           allOwners = action.payload.data;
-          console.log('allOwners:', allOwners)
+          // console.log('allOwners:', allOwners)
+          this.emit('CHANGE');
+          break;
+        case 'OWNER_SEARCH_RESULTS':
+          _owner = action.payload.data;
+
           this.emit('CHANGE');
           break;
       }
@@ -38,6 +44,10 @@ class PetStore extends EventEmitter {
 
   getAllOwners() {
     return allOwners;
+  }
+
+  getOwner() {
+    return _owner;
   }
 }
 

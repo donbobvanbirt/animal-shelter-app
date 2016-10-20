@@ -13,6 +13,13 @@ const ServerActions = {
       type: 'GOT_ALL_OWNERS',
       payload: { data }
     })
+  },
+
+  ownerSearchResults(data) {
+    AppDispatcher.dispatch({
+      type: 'OWNER_SEARCH_RESULTS',
+      payload: { data }
+    })
   }
 }
 

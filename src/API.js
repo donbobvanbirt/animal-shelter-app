@@ -60,6 +60,16 @@ const API = {
       this.getAllPets();
     })
     .catch(console.error)
+  },
+
+  clientSearch(name) {
+    get(`/api/owners/pets/${name}`)
+    .then(res => {
+      let { data } = res;
+      // console.log('data', data);
+      ServerActions.ownerSearchResults(data);
+    })
+    .catch(console.error)
   }
 
 }

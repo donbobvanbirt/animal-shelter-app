@@ -5,6 +5,7 @@ import { Menu } from 'semantic-ui-react'
 
 import AddClient from './AddClient'
 import AllClients from './AllClients'
+import ClientSearch from './ClientSearch'
 
 export default class Clients extends Component {
   constructor() {
@@ -26,6 +27,8 @@ export default class Clients extends Component {
       subComponent = <AddClient/>
     } else if (activeItem === "all") {
       subComponent = <AllClients/>
+    } else if (activeItem === "search") {
+      subComponent = <ClientSearch/>
     }
 
 

@@ -23,6 +23,10 @@ const PetActions = {
 
   addNewClient(obj) {
     API.addNewClient(obj);
+  },
+
+  clientSearch(name) {
+    API.clientSearch(name)
   }
 }
 
