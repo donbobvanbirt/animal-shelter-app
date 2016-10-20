@@ -62,7 +62,7 @@ const API = {
     .catch(console.error)
   },
 
-  petSearch(name) {
+  clientSearch(name) {
     get(`/api/owners/pets/${name}`)
     .then(res => {
       let { data } = res;

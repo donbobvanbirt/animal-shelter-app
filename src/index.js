@@ -9,8 +9,8 @@ import Clients from './components/Clients'
 render(
   <Router history ={browserHistory}>
     <Route path ='/' component ={Layout}>
-      {/* <IndexRoute component ={EarthSandwitch}/> */}
-      <Route path='/pets' component={Pets} />
+      <IndexRoute component={Pets}/>
+      {/* <Route path='/pets' component={Pets} /> */}
       <Route path='/clients' component={Clients} />
     </Route>
   </Router>,
